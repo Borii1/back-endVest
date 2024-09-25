@@ -25,11 +25,11 @@ import { Activity } from './entities/activityentities/activity.entity';
     TypeOrmModule.forRoot({
       type: 'mysql',
       url: process.env.MYSQL_URL,
-      host: process.env.MYSQL_HOST, // Use the MYSQL_HOST variable
-      port: +process.env.MYSQL_PORT, // Use the MYSQL_PORT variable
-      username: process.env.MYSQL_USER, // Use the MYSQL_USER variable
-      password: process.env.MYSQL_PASSWORD, // Use the MYSQL_PASSWORD variable
-      database: process.env.MYSQL_DATABASE, // Use the MYSQL_DATABASE variable
+      host: process.env.MYSQL_HOST, 
+      port: +process.env.MYSQL_PORT, 
+      username: process.env.MYSQL_USER, 
+      password: process.env.MYSQL_PASSWORD, 
+      database: process.env.MYSQL_DATABASE, 
       entities: [User, Startup, Investor,FundingRound, ProfilePicture,CapTableInvestor,Activity],
       synchronize: true,
       // logging:true
