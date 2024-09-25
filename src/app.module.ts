@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
 
 import { AuthModule } from './auth/auth.module';
 import { User } from './entities/user.entity';
@@ -20,13 +21,15 @@ import { Activity } from './entities/activityentities/activity.entity';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: '127.0.0.1',
-      port: 3306,
-      username: 'root',
-      password: 'sandkiller1234',
-      database: 'startupvest',
+      url: process.env.MYSQL_URL,
+      host: process.env.MYSQL_HOST, // Use the MYSQL_HOST variable
+      port: +process.env.MYSQL_PORT, // Use the MYSQL_PORT variable
+      username: process.env.MYSQL_USER, // Use the MYSQL_USER variable
+      password: process.env.MYSQL_PASSWORD, // Use the MYSQL_PASSWORD variable
+      database: process.env.MYSQL_DATABASE, // Use the MYSQL_DATABASE variable
       entities: [User, Startup, Investor,FundingRound, ProfilePicture,CapTableInvestor,Activity],
       synchronize: true,
       // logging:true
